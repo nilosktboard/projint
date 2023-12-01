@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+</head>
+<style>
+    body {
+        background-image: url("");
+    }
+</style>
+<body>
+    <h1>Chatbot sobre Hardware</h1>
+    <a href="">IR PARA PAGÍNA INICIAL</a>
+    <img src="https://dular.vteximg.com.br/arquivos/ids/5715330-500-500/image-06da2996519f44c1a29d692819b705f2.jpg?v=638148019076000000" />
+    <a href="file:///C:/Users/928609/Desktop/chat%20sobre%20Rede.html">IR PARA O CHAT DE REDE</a>
+    <div id="chat-container">
+        <div id="chat-output"></div>
+        <ul id="question-list">
+            <li onclick="redirectToResponse(1)">O que é Hardware?</li>
+            <li onclick="redirectToResponse(2)">O que é um processador?</li>
+            <li onclick="redirectToResponse(3)">O que é placa-mãe?</li>
+            <li onclick="redirectToResponse(4)">O que é fonte de energia?</li>
+            <li onclick="redirectToResponse(5)">O que é HD?</li>
+            <li onclick="redirectToResponse(6)">O que é um monitor?</li>
+            <li onclick="redirectToResponse(7)">O que é um teclado?</li>
+            <li onclick="redirectToResponse(8)">O que é um mouse?</li>
+            <li onclick="redirectToResponse(9)">O que é webcam?</li>
+        </ul>
+    </div>
+ 
+    <script>
+        const chatContainer = document.getElementById("chat-container");
+        const chatOutput = document.getElementById("chat-output");
+        const userInput = document.getElementById("user-input");
+        const sendButton = document.getElementById("send-button");
+ 
+        // Dicionário de respostas do chatbot
+        const responses = {
+            1: "Hardware são os componentes físicos que compõem um computador.",
+            2: "Processador é uma parte vital dos componentes de hardware, ele serve para processar tudo o que o computador precisa para funcionar.",
+            3: "A placa-mãe é o componente onde todas as peças são conectadas e interligadas.",
+            4: "A fonte de energia é crucial para o funcionamento das peças de hardware, ela alimenta as peças dando energia para que elas funcionem perfeitamente.",
+            5: "HD é onde é armazenado todas as informações que você salvou.",
+            6: "O monitor é o componente visual onde você pode ver o que está fazendo em tempo real.",
+            7: "O teclado é o componente de entrada com todas as teclas que podem ser clicadas, executando ações.",
+            8: "O mouse é um cursor que auxilia nas pesquisas em páginas WEB, garantindo uma pesquisa rápida e precisa.",
+            9: "A webcam é uma câmera que serve para gravar o seu rosto em tempo real."
+        };
+ 
+        // Função para gerar resposta do chatbot
+        function chatbotResponse(questionNumber) {
+            return responses[questionNumber] || "Desculpe, não entendi o que você disse.";
+        }
+ 
+        // Função para adicionar mensagens ao chat
+        function addMessageToChat(message, sender) {
+            const messageElement = document.createElement("div");
+            messageElement.textContent = `${sender}: ${message}`;
+            chatOutput.appendChild(messageElement);
+        }
+ 
+        // Função para lidar com a tecla "Enter" ao digitar
+        userInput.addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                sendButton.click();
+            }
+        });
+ 
+        // Função para redirecionar para a resposta correspondente ao clicar na pergunta da lista
+        function redirectToResponse(questionNumber) {
+            const botResponse = chatbotResponse(questionNumber);
+            addMessageToChat(botResponse, "Chatbot");
+        }
+    </script>
+</body>
+</html>
